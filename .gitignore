@@ -8,3 +8,8 @@ temp_jobs/
 *.ass
 *.zip
 cookies.txt
+
+cookies.txt
+backend/cookies.txt
+temp_jobs/
+*.mp4
