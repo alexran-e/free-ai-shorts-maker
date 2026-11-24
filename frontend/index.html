@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free AI Shorts Maker | YouTube to Shorts</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- Header / Logo -->
+    <header class="header">
+      <div class="logo-wrap">
+        <div class="logo-icon">🎬</div>
+        <div>
+          <h1>Free AI Shorts Maker</h1>
+          <p class="subtitle-text">১০০% ফ্রি ও ওপেন-সোর্স YouTube Shorts জেনারেটর</p>
+        </div>
+      </div>
+      <span class="free-badge">No Limit • $0 Cost</span>
+    </header>
+
+    <!-- Main Input Card -->
+    <main class="card">
+      <div class="input-group">
+        <label for="youtubeUrl">YouTube ভিডিও লিংক দিন</label>
+        <div class="url-row">
+          <input
+            type="url"
+            id="youtubeUrl"
+            placeholder="https://www.youtube.com/watch?v=..."
+            autocomplete="off"
+            required
+          />
+          <button id="generateBtn" class="btn-primary">
+            ✨ Generate Shorts
+          </button>
+        </div>
+      </div>
+
+      <!-- Terms & Copyright Checkbox -->
+      <label class="tos-check">
+        <input type="checkbox" id="tosConfirm" />
+        <span>
+          আমি নিশ্চিত করছি যে এই ভিডিওটি আমার নিজস্ব, Creative Commons লাইসেন্সযুক্ত, অথবা আমার ব্যবহারের অনুমতি রয়েছে (YouTube ToS অনুসরণ করে)।
+        </span>
+      </label>
+
+      <!-- Settings Grid -->
+      <div class="settings-grid">
+        <!-- Clip Duration -->
+        <div class="setting-box">
+          <label for="clipDuration">⏱️ Clip Duration</label>
+          <select id="clipDuration">
+            <option value="30">30 Seconds</option>
+            <option value="60" selected>60 Seconds</option>
+            <option value="90">90 Seconds</option>
+          </select>
+        </div>
+
+        <!-- Number of Clips -->
+        <div class="setting-box">
+          <label for="numClips">🎞️ Number of Clips</label>
+          <select id="numClips">
+            <option value="3" selected>3 Clips</option>
+            <option value="5">5 Clips</option>
+            <option value="10">10 Clips</option>
+          </select>
+        </div>
+
+        <!-- Subtitle Toggle & Language -->
+        <div class="setting-box">
+          <label for="subtitleEnabled">💬 Subtitle</label>
+          <div class="inline-controls">
+            <select id="subtitleEnabled">
+              <option value="true" selected>ON</option>
+              <option value="false">OFF</option>
+            </select>
+            <select id="subtitleLang">
+              <option value="original" selected>Original Language</option>
+              <option value="bn">বাংলা</option>
+              <option value="en">English</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Video Format & Smart Crop -->
+        <div class="setting-box">
+          <label for="smartCrop">📱 Video Format (Vertical 9:16)</label>
+          <div class="inline-controls">
+            <span class="format-tag">9:16 Vertical</span>
+            <select id="smartCrop">
+              <option value="true" selected>Smart Crop: ON</option>
+              <option value="false">Smart Crop: OFF</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Optional Backend Server Setting -->
+      <details class="backend-config">
+        <summary>⚙️ Backend Server সেটিংস (ঐচ্ছিক)</summary>
+        <div class="backend-input-wrap">
+          <input
+            type="url"
+            id="apiBaseUrl"
+            placeholder="http://localhost:8000 (লাইভ সার্ভারের লিংক এখানে বসবে)"
+          />
+        </div>
+      </details>
+    </main>
+
+    <!-- Processing Progress Bar -->
+    <section id="progressSection" class="card hidden">
+      <div class="progress-header">
+        <span id="statusText">প্রসেসিং শুরু হচ্ছে...</span>
+        <span id="progressPercent">0%</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div id="progressBarFill" class="progress-bar-fill"></div>
+      </div>
+      <p class="progress-hint">
+        ভিডিওর দৈর্ঘ্য অনুযায়ী AI বিশ্লেষণ ও এডিটিংয়ে ১-৩ মিনিট সময় লাগতে পারে। অনুগ্রহ করে অপেক্ষা করুন।
+      </p>
+    </section>
+
+    <!-- Error Alert -->
+    <div id="errorBox" class="error-box hidden"></div>
+
+    <!-- Generated Shorts Preview & Download -->
+    <section id="resultsSection" class="results-section hidden">
+      <div class="results-header">
+        <h2>🎉 তৈরি হওয়া AI Shorts</h2>
+        <button id="downloadAllBtn" class="btn-secondary">
+          📦 সবগুলো একসঙ্গে ডাউনলোড (ZIP)
+        </button>
+      </div>
+      <div id="clipsGrid" class="clips-grid"></div>
+    </section>
+
+    <footer class="footer">
+      <p>Open Source AI Shorts Maker • Whisper AI + FFmpeg + Smart Crop</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
